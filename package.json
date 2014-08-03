@@ -1,0 +1,12 @@
+{
+    "name": "darthlukan.brackets-dilbert",
+    "title": "Brackets - Dilbert",
+    "description": "A 'Daily Dilbert' viewer for Brackets.",
+    "homepage": "https://github.com/darthlukan/brackets-dilbert",
+    "version": "0.1",
+    "author": "Brian Christopher Tomlinson <brian.tomlinson@linux.com> (http://www.brianctomlinson.com)",
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.24.0"
+    }
+}
