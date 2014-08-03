@@ -6,45 +6,27 @@ define(function (require, exports, module) {
 
     var CommandManager = brackets.getModule("command/CommandManager"),
         Menus          = brackets.getModule("command/Menus"),
-        Dialogs        = brackets.getModule("widgets/Dialogs");
+        Dialogs        = brackets.getModule("widgets/Dialogs"),
+        DefaultDialogs = brackets.getModule("widgets/DefaultDialogs");
 
 
     // Function to run when the menu item is clicked
     function dilbertHandler() {
-        var baseUrl = "http://www.dilbert.com/";
-        var comicBaseUrl = baseUrl + "strips/comic/";
-        var today = grabDate();
-        var requestUrl = comicBaseUrl + today + "/";
-        var html = "";
+        var feedUrl = "http://rss.latunyi.com/dilbert.rss";
+        var html;
         $.ajax({
-            url: requestUrl,
-            async: false,
+            url: feedUrl,
             type: 'GET',
+            async: false,
             success: function(data) {
                 html = data;
                 return html;
             }
         });
-        console.log("page: ");
-        console.log(html); // TODO: Here's our HTML, now parse it.
-    }
+        var feed = html.getElementsByTagName("description");
+        var imageTag = feed[1].childNodes[0].data.toString();
 
-    function grabDate() {
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth()+1;
-        var year = today.getFullYear();
-
-        if (day < 10) {
-            day = '0' + day;
-        }
-
-        if (month < 10) {
-            month = '0' + month;
-        }
-
-        today = year + "-" + month + "-" + day;
-        return today;
+        Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, "Daily Dilbert", imageTag);
     }
 
     var MY_COMMAND_ID = "brackets-dilbert.getComic";
