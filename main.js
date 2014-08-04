@@ -10,23 +10,13 @@ define(function (require, exports, module) {
         DefaultDialogs = brackets.getModule("widgets/DefaultDialogs");
 
 
-    // Function to run when the menu item is clicked
     function dilbertHandler() {
         var feedUrl = "http://rss.latunyi.com/dilbert.rss";
-        var html;
-        $.ajax({
-            url: feedUrl,
-            type: 'GET',
-            async: false,
-            success: function(data) {
-                html = data;
-                return html;
-            }
+        $.get(feedUrl, 'GET', function (data) {
+            var feed = data.getElementsByTagName("description");
+            var imageTag = feed[1].childNodes[0].data.toString();
+            return Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, "Daily Dilbert", imageTag);
         });
-        var feed = html.getElementsByTagName("description");
-        var imageTag = feed[1].childNodes[0].data.toString();
-
-        Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, "Daily Dilbert", imageTag);
     }
 
     var MY_COMMAND_ID = "brackets-dilbert.getComic";
