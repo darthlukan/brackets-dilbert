@@ -10,6 +10,11 @@
 > Images are provided via the RSS feed located at [this link](http://rss.latunyi.com/dilbert.rss).
 
 
+## Screenshots
+
+> See [this page](https://github.com/darthlukan/brackets-dilbert/wiki/Screenshots)
+
+
 ## License
 
 > MIT, see LICENSE file.
