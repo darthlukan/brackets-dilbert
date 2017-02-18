@@ -3,7 +3,7 @@
     "title": "Brackets - Dilbert",
     "description": "A 'Daily Dilbert' viewer for Brackets.",
     "homepage": "https://github.com/darthlukan/brackets-dilbert",
-    "version": "1.1",
+    "version": "1.1.0",
     "author": "Brian Christopher Tomlinson <brian.tomlinson@linux.com> (http://www.brianctomlinson.com)",
     "license": "MIT",
     "engines": {
