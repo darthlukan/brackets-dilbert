@@ -11,7 +11,7 @@ define(function (require, exports, module) {
 
 
     function dilbertHandler() {
-        var feedUrl = "http://rss.latunyi.com/dilbert.rss";
+        var feedUrl = "http://comicfeeds.chrisbenard.net/view/dilbert/rss";
         $.get(feedUrl, 'GET', function (data) {
             var feed = data.getElementsByTagName("description");
             var imageTag = feed[1].childNodes[0].data.toString();
